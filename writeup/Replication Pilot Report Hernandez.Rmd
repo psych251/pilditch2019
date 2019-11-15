@@ -140,6 +140,7 @@ library(tidyr)
 library(dplyr)
 library(stringr) 
 library(ggplot2)
+library(readxl)
 
 Data will be imported from Qualtrics via mTurk survey, extraneous data discarded and converted to long format from wide format for each of the analysis. 
 
@@ -149,20 +150,25 @@ Data will be imported from Qualtrics via mTurk survey, extraneous data discarded
 
 
 ####Load Relevant Libraries and Functions
-#library(tidyr)
-#library(dplyr)
-#library(stringr) 
-#library(ggplot2)
+library(tidyr)
+library(dplyr)
+library(stringr) 
+library(ggplot2)
+library(readxl)
 
 ####Import data
 
-pilot <- read.csv('https://github.com/psych251/pilditch2019/blob/master/Pilot_study.csv', header = TRUE)
+pilot <- read_xlsx('https://github.com/psych251/pilditch2019/blob/master/Pilot_data_revised.xlsx')
 
 #### Data exclusion / filtering
 
-#pseudocode filter out all non-important variables, all but reponses to scenario and confidence
+pilot_rows12_removed <- pilot[-c(1,2),]
 
+filtered_pilot <- select(pilot_rows12_removed, +contains("Nitro"), +contains("Ster"), +contains("BT"), +contains("Crash")) #remove extra qualtrics columns
 
+exp2_filtered <- select(filtered_pilot, -contains("rn")) #remove reasoning for choice 
+
+exp2_decision <- select(exp2_filtered, -contains("%")) # only decisions retained
 
 
 
