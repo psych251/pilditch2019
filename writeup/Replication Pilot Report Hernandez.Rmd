@@ -158,11 +158,14 @@ library(readxl)
 
 ####Import data
 
-pilot <- read_xlsx('https://github.com/psych251/pilditch2019/blob/master/Pilot_data_revised.xlsx')
+pilot_1 <- read.csv('https://github.com/psych251/pilditch2019/blob/master/Pilot_study.csv')
+
+
+pilot <- read_xlsx('C:/Users/crazy/OneDrive/Desktop/pilditch2019/Pilot_data_revised.xlsx')
 
 #### Data exclusion / filtering
 
-pilot_rows12_removed <- pilot[-c(1,2),]
+pilot_rows12_removed <- pilot[-c(1,2),] # remove additional rows from qualtrics file
 
 filtered_pilot <- select(pilot_rows12_removed, +contains("Nitro"), +contains("Ster"), +contains("BT"), +contains("Crash")) #remove extra qualtrics columns
 
@@ -170,12 +173,354 @@ exp2_filtered <- select(filtered_pilot, -contains("rn")) #remove reasoning for c
 
 exp2_decision <- select(exp2_filtered, -contains("%")) # only decisions retained
 
+exp2_decision_long <- gather(exp2_decision, result, na.rm = TRUE) #convert to tidy/long data format, remove NAs 
+
+exp2_decision_long_mod <- exp2_decision_long %>% 
+  separate(result, into = c("Scenario", "Result_given", "Condition"), sep = "_" ) #create varaibles for Scenario type, Result_give (pos/neg), and Condition (control/experimental)
+
+exp2_decision_long_mod$Condition <-
+  replace(exp2_decision_long_mod$Condition, exp2_decision_long_mod$Condition == "ex", "exp") #convert all "ex" nomenclature to "exp" nonmenclature for more descriptive variables, initial Qualtrics variables were character restricted
+
+exp2_decision_long_mod$Scenario <-
+  replace(exp2_decision_long_mod$Scenario, exp2_decision_long_mod$Scenario == "nitro", "Nitro") #convert all 'nitro' to 'Nitro'
 
 
 # group data by condition, find mean porportions of each condition
 
-#Analyis 1
+#Analysis 1
+exp2_means <- exp2_decision_long_mod %>% 
+  group_by(Result_given, Condition, value) %>% 
+  summary()
+  
+  summarise(proportion_yes = count(exp2_decision_long_mod$value, value))
 
+exp2_means
+
+
+exp2_raw_counts <- count(exp2_decision_long_mod, Result_given, Condition, value, name = 'count')
+exp2_raw_counts
+
+#xtab2 <- xtabs(~ Result_given +value +Condition + Scenario, exp2_decision_long_mod) #cross tabs
+#xtab2
+
+
+exp2_proportions <- exp2_decision_long_mod %>% 
+  group_by(Result_given, Condition, value) %>% 
+  summarize(n())
+  
+exp2_proportions
+
+xtab2 <- xtabs(~ Result_given +value +Condition + Scenario, exp2_decision_long_mod)
+xtab2
+
+exp2_means_1 <- exp2_decision_long_mod %>% 
+  group_by(Result_given, Condition, value) %>% 
+  summarise(count = n())
+
+exp2_means_1 <-
+
+exp2_pos_ctrl <- filter(exp2_decision_long_mod, Result_given == 'pos', Condition == 'ctrl')
+
+exp2_neg_ctrl <- filter(exp2_decision_long_mod, Result_given == 'neg', Condition == 'ctrl')
+
+exp2_pos_exp <- filter(exp2_decision_long_mod, Result_given == 'pos', Condition == 'exp')
+
+exp2_neg_exp <-  filter(exp2_decision_long_mod, Result_given == 'neg', Condition == 'exp')
+
+summarise()
+
+exp2_pos_ctrl_overall <- exp2_pos_ctrl %>% 
+  group_by(Result_given, Condition, value) %>% 
+  summarize(count = n())
+  
+# calculate overall proportions
+
+## Nitro Scenario 
+
+### Nitro Positive Experiment Condition
+Nitro_pos_exp_Yes <- filter(exp2_pos_exp, Scenario == 'Nitro',  value == 'Yes')
+
+Nitro_pos_exp_No <- filter(exp2_pos_exp, Scenario == 'Nitro',  value == 'No')
+
+Nitro_pos_exp_CtTell <- filter(exp2_pos_exp, Scenario == 'Nitro',  value == 'Cannot tell')
+
+Nitro_pos_exp_Total <- filter(exp2_pos_exp, Scenario == 'Nitro')
+
+### Nitro Neg Experiment Condition
+
+Nitro_neg_exp_Yes <- filter(exp2_neg_exp, Scenario == 'Nitro',  value == 'Yes')
+
+Nitro_neg_exp_No <- filter(exp2_neg_exp, Scenario == 'Nitro',  value == 'No')
+
+Nitro_neg_exp_CtTell <- filter(exp2_neg_exp, Scenario == 'Nitro',  value == 'Cannot tell')
+
+Nitro_neg_exp_Total <- filter(exp2_neg_exp, Scenario == 'Nitro')
+
+
+### Nitro Pos Control Condition
+Nitro_pos_ctrl_Yes <- filter(exp2_pos_ctrl, Scenario == 'Nitro',  value == 'Yes')
+
+Nitro_pos_ctrl_No <- filter(exp2_pos_ctrl, Scenario == 'Nitro',  value == 'No')
+
+Nitro_pos_ctrl_CtTell <- filter(exp2_pos_ctrl, Scenario == 'Nitro',  value == 'Cannot tell')
+
+Nitro_pos_ctrl_Total <- filter(exp2_pos_ctrl, Scenario == 'Nitro')
+
+### Nitro Neg Control Condition
+
+Nitro_neg_ctrl_Yes <- filter(exp2_neg_ctrl, Scenario == 'Nitro',  value == 'Yes')
+
+Nitro_neg_ctrl_No <- filter(exp2_neg_ctrl, Scenario == 'Nitro',  value == 'No')
+
+Nitro_neg_ctrl_CtTell <- filter(exp2_neg_ctrl, Scenario == 'Nitro',  value == 'Cannot tell')
+
+Nitro_neg_ctrl_Total <- filter(exp2_neg_ctrl, Scenario == 'Nitro')
+
+## Steriods Scenario 
+
+### Steriods Positive Experiment Condition
+Steriods_pos_exp_Yes <- filter(exp2_pos_exp, Scenario == 'Steriods',  value == 'Yes')
+
+Steriods_pos_exp_No <- filter(exp2_pos_exp, Scenario == 'Steriods',  value == 'No')
+
+Steriods_pos_exp_CtTell <- filter(exp2_pos_exp, Scenario == 'Steriods',  value == 'Cannot tell')
+
+Steriods_pos_exp_Total <- filter(exp2_pos_exp, Scenario == 'Steriods')
+
+### Steriods Neg Experiment Condition
+
+Steriods_neg_exp_Yes <- filter(exp2_neg_exp, Scenario == 'Steriods',  value == 'Yes')
+
+Steriods_neg_exp_No <- filter(exp2_neg_exp, Scenario == 'Steriods',  value == 'No')
+
+Steriods_neg_exp_CtTell <- filter(exp2_neg_exp, Scenario == 'Steriods',  value == 'Cannot tell')
+
+Steriods_neg_exp_Total <- filter(exp2_neg_exp, Scenario == 'Steriods')
+
+
+### Steriods Pos Control Condition
+Steriods_pos_ctrl_Yes <- filter(exp2_pos_ctrl, Scenario == 'Steriods',  value == 'Yes')
+
+Steriods_pos_ctrl_No <- filter(exp2_pos_ctrl, Scenario == 'Steriods',  value == 'No')
+
+Steriods_pos_ctrl_CtTell <- filter(exp2_pos_ctrl, Scenario == 'Steriods',  value == 'Cannot tell')
+
+Steriods_pos_ctrl_Total <- filter(exp2_pos_ctrl, Scenario == 'Steriods')
+
+### Steriods Neg Control Condition
+
+Steriods_neg_ctrl_Yes <- filter(exp2_neg_ctrl, Scenario == 'Steriods',  value == 'Yes')
+
+Steriods_neg_ctrl_No <- filter(exp2_neg_ctrl, Scenario == 'Steriods',  value == 'No')
+
+Steriods_neg_ctrl_CtTell <- filter(exp2_neg_ctrl, Scenario == 'Steriods',  value == 'Cannot tell')
+
+Steriods_neg_ctrl_Total <- filter(exp2_neg_ctrl, Scenario == 'Steriods')
+
+## BT Scenario 
+
+### BT Positive Experiment Condition
+BT_pos_exp_Yes <- filter(exp2_pos_exp, Scenario == 'BT',  value == 'Yes')
+
+BT_pos_exp_No <- filter(exp2_pos_exp, Scenario == 'BT',  value == 'No')
+
+BT_pos_exp_CtTell <- filter(exp2_pos_exp, Scenario == 'BT',  value == 'Cannot tell')
+
+BT_pos_exp_Total <- filter(exp2_pos_exp, Scenario == 'BT')
+
+### BT Neg Experiment Condition
+
+BT_neg_exp_Yes <- filter(exp2_neg_exp, Scenario == 'BT',  value == 'Yes')
+
+BT_neg_exp_No <- filter(exp2_neg_exp, Scenario == 'BT',  value == 'No')
+
+BT_neg_exp_CtTell <- filter(exp2_neg_exp, Scenario == 'BT',  value == 'Cannot tell')
+
+BT_neg_exp_Total <- filter(exp2_neg_exp, Scenario == 'BT')
+
+
+### BT Pos Control Condition
+BT_pos_ctrl_Yes <- filter(exp2_pos_ctrl, Scenario == 'BT',  value == 'Yes')
+
+BT_pos_ctrl_No <- filter(exp2_pos_ctrl, Scenario == 'BT',  value == 'No')
+
+BT_pos_ctrl_CtTell <- filter(exp2_pos_ctrl, Scenario == 'BT',  value == 'Cannot tell')
+
+BT_pos_ctrl_Total <- filter(exp2_pos_ctrl, Scenario == 'BT')
+
+### BT Neg Control Condition
+
+BT_neg_ctrl_Yes <- filter(exp2_neg_ctrl, Scenario == 'BT',  value == 'Yes')
+
+BT_neg_ctrl_No <- filter(exp2_neg_ctrl, Scenario == 'BT',  value == 'No')
+
+BT_neg_ctrl_CtTell <- filter(exp2_neg_ctrl, Scenario == 'BT',  value == 'Cannot tell')
+
+BT_neg_ctrl_Total <- filter(exp2_neg_ctrl, Scenario == 'BT')
+
+
+## Crash Scenario 
+
+### Crash Positive Experiment Condition
+Crash_pos_exp_Yes <- filter(exp2_pos_exp, Scenario == 'Crash',  value == 'Yes')
+
+Crash_pos_exp_No <- filter(exp2_pos_exp, Scenario == 'Crash',  value == 'No')
+
+Crash_pos_exp_CtTell <- filter(exp2_pos_exp, Scenario == 'Crash',  value == 'Cannot tell')
+
+Crash_pos_exp_Total <- filter(exp2_pos_exp, Scenario == 'Crash')
+
+### Crash Neg Experiment Condition
+
+Crash_neg_exp_Yes <- filter(exp2_neg_exp, Scenario == 'Crash',  value == 'Yes')
+
+Crash_neg_exp_No <- filter(exp2_neg_exp, Scenario == 'Crash',  value == 'No')
+
+Crash_neg_exp_CtTell <- filter(exp2_neg_exp, Scenario == 'Crash',  value == 'Cannot tell')
+
+Crash_neg_exp_Total <- filter(exp2_neg_exp, Scenario == 'Crash')
+
+
+### Crash Pos Control Condition
+Crash_pos_ctrl_Yes <- filter(exp2_pos_ctrl, Scenario == 'Crash',  value == 'Yes')
+
+Crash_pos_ctrl_No <- filter(exp2_pos_ctrl, Scenario == 'Crash',  value == 'No')
+
+Crash_pos_ctrl_CtTell <- filter(exp2_pos_ctrl, Scenario == 'Crash',  value == 'Cannot tell')
+
+Crash_pos_ctrl_Total <- filter(exp2_pos_ctrl, Scenario == 'Crash')
+
+### Crash Neg Control Condition
+
+Crash_neg_ctrl_Yes <- filter(exp2_neg_ctrl, Scenario == 'Crash',  value == 'Yes')
+
+Crash_neg_ctrl_No <- filter(exp2_neg_ctrl, Scenario == 'Crash',  value == 'No')
+
+Crash_neg_ctrl_CtTell <- filter(exp2_neg_ctrl, Scenario == 'Crash',  value == 'Cannot tell')
+
+Crash_neg_ctrl_Total <- filter(exp2_neg_ctrl, Scenario == 'Crash')
+
+
+# Graph proportions
+## Create table for proportions
+exp2_counts <- exp2_decision_long_mod %>% 
+  group_by(Result_given, Condition, value, Scenario) %>% 
+  summarise(count = n())
+
+Scenarios <- unique(exp2_counts$Scenario)
+Results_given <- unique(exp2_counts$Result_given)
+Conditions <- unique(exp2_counts$Condition)
+Values  <- unique(exp2_counts$value)
+Proportions <- 0
+
+exp2_prop_table_blank <- tibble('Scenario', 'Result_given', 'Condition', 'Value', Proportions, y = 1:48)
+
+#replace(exp2_prop_table_blank, 'Scenario', Scenarios)
+
+for (i in 1:4)
+  for (j in 1:12)
+  exp2_prop_table_blank[(i-1)*12+j,1] = Scenarios[i]
+
+ 
+for (i in 1:4)
+    for (j in 1:2)
+        for (k in 1:6)
+          exp2_prop_table_blank[12*(i-1)+6*(j-1)+k, 2] = Results_given[j]
+
+for (i in 1:8)
+    for (j in 1:2)
+      for (k in 1:3)
+        exp2_prop_table_blank[6*(i-1)+3*(j-1)+k,3] = Conditions[j]
+        
+for (i in 1:16)
+    for (j in 1:3)
+        exp2_prop_table_blank[3*(i-1)+j,4] = Values[j]
+```
+
+```{r}
+
+
+
+## Calculate proportions
+
+for (i in 1:48)
+  {n = ''
+# Scenario 
+ if (exp2_prop_table_blank[i,1] == Scenarios[1])
+  {n = Scenarios[1]}
+
+  if (exp2_prop_table_blank[i,1] == Scenarios[2])
+  {n = Scenarios[2]}
+
+  if (exp2_prop_table_blank[i,1] == Scenarios[3])
+  {n = Scenarios[3]}
+  
+  if (exp2_prop_table_blank[i,1] == Scenarios[4])
+  {n = Scenarios[4]}
+# Result_given
+
+  if (exp2_prop_table_blank[i,2] == Results_given[1])
+  {n[1] = paste(n[1], Results_given[1], sep="_")}
+
+  if (exp2_prop_table_blank[i,2] == Results_given[2])
+  {n[1] = paste(n[1], Results_given[2], sep="_")}
+
+# Conditions
+
+
+  if (exp2_prop_table_blank[i,3] == Conditions[1])
+  {n[1] = paste(n[1], Conditions[1], sep="_")}
+
+  if (exp2_prop_table_blank[i,3] == Conditions[2])
+  {n[1] = paste(n[1], Conditions[2], sep="_")}
+
+# Values n[1]= conidition for total n[2] = condition_value
+
+  if (exp2_prop_table_blank[i,4] == Values[1])
+  {n[2] = paste(n[1], Values[1], sep="_")}
+
+  if (exp2_prop_table_blank[i,4] == Values[2])
+  {n[2] = paste(n[1], Values[2], sep="_")}
+
+  if (exp2_prop_table_blank[i,4] == Values[3])
+  {n[2] = paste(n[1], Values[3], sep="_")}
+
+  if (grepl("Tell", n[2], fixed=TRUE))
+    {n[2] = paste(n[1], "CtTell", sep="_")}
+
+# Proportion calculation
+
+n[1] = paste(n[1], "Total", sep="_")
+
+
+exp2_prop_table_blank[i,5] = length(get(n[2])[[3]])/length(get(n[1])[[3]])}
+```
+
+``` {r}
+#Plots Proportions
+
+exp2_graph_data <- exp2_prop_table_blank
+
+
+
+
+ggplot(exp2_graph_data) + 
+  geom_bar(aes(x = value, y = Proportions, group = 1)) +
+  facet_grid(Result_given ~ Condition)
+
+group_by(exp2_graph_data, 'Result_given', 'Condition', 'Value'
+
+exp2_pos_ctrl_overall$`n()` <- exp2_pos_ctrl_overall$`n()`/sum(exp2_pos_ctrl_overall$'n()')
+
+ggplot(data = exp2_pos_ctrl_overall) + 
+  geom_col(mapping = aes(x = value, y =  ))
+
+ggplot(exp2_pos_ctrl) + 
+  geom_bar(aes(x = value, y = ..prop.., group = 1))
+
+ggplot(exp2_decision_long_mod) + 
+  geom_bar(aes(x = value, y = ..prop.., group = 1)) +
+  facet_grid(Result_given ~ Condition)
 
 
 #### Prepare data for analysis - create columns etc.
@@ -200,6 +545,21 @@ Means of confidence in judgments will be computed by grouping by test-result con
 
 
 *Side-by-side graph with original graph is ideal here*
+
+```{r}
+
+ggplot(exp2_decision_long_mod) + 
+  geom_bar(aes(x = value, y = ..prop.., group = 1)) +
+  facet_grid(Result_given ~ Condition)
+
+
+```
+```{r}
+exp2_decision_long_mod %>% group_by(Scenario, Result_given, Condition) %>% 
+
+prop.table(margin = NULL)
+```
+
 
 ###Exploratory analyses
 
