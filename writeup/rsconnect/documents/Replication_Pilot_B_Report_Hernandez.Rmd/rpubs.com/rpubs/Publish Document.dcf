@@ -4,7 +4,7 @@ username:
 account: rpubs
 server: rpubs.com
 hostUrl: rpubs.com
-appId: https://api.rpubs.com/api/v1/document/555136/91d604351f0e4597bf3d1b78fe70845b
-bundleId: https://api.rpubs.com/api/v1/document/555136/91d604351f0e4597bf3d1b78fe70845b
-url: http://rpubs.com/philipah/555136/edit
-when: 1575223950.86218
+appId: https://api.rpubs.com/api/v1/document/555156/050da23c925a47f589819b49397592ea
+bundleId: https://api.rpubs.com/api/v1/document/555156/050da23c925a47f589819b49397592ea
+url: http://rpubs.com/publish/claim/555156/a1353bce2bdb4f3e9b3ac134546aa9d5
+when: 1575228171.22336

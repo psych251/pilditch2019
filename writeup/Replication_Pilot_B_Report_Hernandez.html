@@ -1725,16 +1725,18 @@ exp2_binary_summary_by_condition$`sd_correct`[is.nan(exp2_binary_summary_by_cond
 exp2_binary_cum_result_by_id$Condition = factor(exp2_binary_cum_result_by_id$Condition) #encode Condition as factor
 exp2_binary_cum_result_by_id$Result_given = factor(exp2_binary_cum_result_by_id$Result_given) #encode Result_given as factor
 
-exp2.aov &lt;- anovaBF(correct ~ Result_given + Condition + Condition*Result_given,  data = exp2_binary_cum_result_by_id,
-whichRandom = &quot;Result_given&quot;)</code></pre>
+exp2.aov &lt;- anovaBF(correct ~ Condition*Result_given,  data = exp2_binary_cum_result_by_id)</code></pre>
 <pre><code>## Warning: data coerced from tibble to data frame</code></pre>
 <pre class="r"><code>exp2.aov</code></pre>
 <pre><code>## Bayes factor analysis
 ## --------------
-## [1] Condition + Result_given : 0.5583512 ±0.8%
+## [1] Result_given                                      : 0.6168375 ±0%
+## [2] Condition                                         : 0.5548786 ±0%
+## [3] Result_given + Condition                          : 0.3460186 ±4.71%
+## [4] Result_given + Condition + Result_given:Condition : 0.3081318 ±0.79%
 ## 
 ## Against denominator:
-##   correct ~ Result_given 
+##   Intercept only 
 ## ---
 ## Bayes factor type: BFlinearModel, JZS</code></pre>
 </div>

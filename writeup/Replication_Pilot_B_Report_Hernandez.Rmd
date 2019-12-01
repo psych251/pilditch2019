@@ -298,9 +298,9 @@ exp2_binary_summary_by_condition$`sd_correct`[is.nan(exp2_binary_summary_by_cond
 exp2_binary_cum_result_by_id$Condition = factor(exp2_binary_cum_result_by_id$Condition) #encode Condition as factor
 exp2_binary_cum_result_by_id$Result_given = factor(exp2_binary_cum_result_by_id$Result_given) #encode Result_given as factor
 
-exp2.aov <- anovaBF(correct ~ Result_given + Condition + Condition*Result_given,  data = exp2_binary_cum_result_by_id,
-whichRandom = "Result_given")
+exp2.aov <- anovaBF(correct ~ Condition*Result_given,  data = exp2_binary_cum_result_by_id)
 exp2.aov
+
 ```
 
 
