@@ -1540,6 +1540,7 @@ div.tocify {
 <p>I decided to opt for a sample size of 58 as this would exceed what was calculated at 95% confidence for three of the four effect sizes. This does underpower the result for</p>
 <p>###Planned Sample</p>
 <p>Planned sample is 58 English speaking Amazon Mechanical Turk workers from the United States with at least a 95% rating from more than 100 tasks.</p>
+<p>Participants will be removed from the study for incomplete responses and if their native language is not English, similarly to methods reported in the original study.</p>
 <p>###Materials</p>
 <p>Materials from experiment will be used as indicated in Experiment 2 of Pilditch (2019) quoted below.</p>
 <blockquote>
@@ -1732,8 +1733,8 @@ exp2.aov &lt;- anovaBF(correct ~ Condition*Result_given,  data = exp2_binary_cum
 ## --------------
 ## [1] Result_given                                      : 0.6168375 ±0%
 ## [2] Condition                                         : 0.5548786 ±0%
-## [3] Result_given + Condition                          : 0.3460186 ±4.71%
-## [4] Result_given + Condition + Result_given:Condition : 0.3081318 ±0.79%
+## [3] Result_given + Condition                          : 0.3436412 ±0.7%
+## [4] Result_given + Condition + Result_given:Condition : 0.3115231 ±0.78%
 ## 
 ## Against denominator:
 ##   Intercept only 

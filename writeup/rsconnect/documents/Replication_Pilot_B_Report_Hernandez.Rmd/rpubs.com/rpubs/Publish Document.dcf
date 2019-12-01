@@ -6,5 +6,5 @@ server: rpubs.com
 hostUrl: rpubs.com
 appId: https://api.rpubs.com/api/v1/document/555156/050da23c925a47f589819b49397592ea
 bundleId: https://api.rpubs.com/api/v1/document/555156/050da23c925a47f589819b49397592ea
-url: http://rpubs.com/publish/claim/555156/a1353bce2bdb4f3e9b3ac134546aa9d5
-when: 1575228171.22336
+url: http://rpubs.com/philipah/555156
+when: 1575230046.10794

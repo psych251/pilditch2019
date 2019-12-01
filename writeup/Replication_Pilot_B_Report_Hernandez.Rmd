@@ -50,6 +50,8 @@ I decided to opt for a sample size of 58 as this would exceed what was calculate
 
 Planned sample is 58 English speaking Amazon Mechanical Turk workers from the United States with at least a 95% rating from more than 100 tasks.   
 
+Participants will be removed from the study for incomplete responses and if their native language is not English, similarly to methods reported in the original study.  
+
 ###Materials
 
 Materials from experiment will be used as indicated in Experiment 2 of Pilditch (2019) quoted below. 
@@ -121,6 +123,7 @@ Mirroring the analysis done in Pilditch(2019), I plan on conducting "a Bayesian 
 
 To further examine relationships, a 3(responses) x 2 (test condition positive/neg ) x 2 (knowledge of exhaustiveness/control) ANOVA will be conducted. 
   
+
 
 
 ###Differences from Original Study
