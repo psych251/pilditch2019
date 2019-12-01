@@ -1,0 +1,339 @@
+---
+title: "Replication of The Zero-Sum Fallacy in Evidence Evaluation by Pilditch, Fenton and Lagnado (2019, Psychological Science)"
+author: "Philip Hernandez (philipah@stanford.edu)"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 3
+    toc_float:
+      collapsed: false
+---
+
+<!-- Replication reports should all use this template to standardize reporting across projects.  These reports will be public supplementary materials that accompany the summary report(s) of the aggregate results. -->
+## Repository
+[Github repository](https://github.com/psych251/pilditch2019)
+
+## Experimental Paradigm
+
+[Qualtrics Survey](https://stanforduniversity.qualtrics.com/jfe/form/SV_2gK1VSf5qoa1q7z)
+
+## Original Paper
+
+[Pilditch, Fenton, and Lagnado (2019)](https://github.com/psych251/pilditch2019/tree/master/original_paper/pilditch2019.pdf "pilditch2019")
+
+##Introduction
+My research interests lie in studying adult learning in the sciences, from the undergraduate sciences through medical school, especially where learning still takes place in lecture halls. However, I’m also interested in what neuroscience and the cognitive sciences can bring to this realm and what can be learned using these populations of post-secondary students. This study, though nominally part of this body of research does concern itself with the population I am interested in.  In addition, I feel that in replicating this study, I would not only be able to hone skills necessary for processing data, but also explore an area of interest in my work. I find the underlying idea of the zero-sum fallacy something to be considered in educational assessment, even if the study is far removed from application in the classroom setting.   
+
+The study was originally performed using mTurk in three related experiments in which scenarios were described onscreen after which respondents answered questions indicating whether their judgment was "yes", "no", or "Cannot Tell". The main difficulties would lie in recruiting, screening, and paying a large enough sample size- 25 people for experiment 1, 200 each in experiments 2 and 3. Beyond randomly assigning participants to groups and the experiment stimulus does not require specialized programming in mTurk. Storage, retrieval and analysis would pose a challenge, as I am not yet familiar with data storage and output from mTurk. As we seek to replicate only one experiment, I would be able to  
+
+
+
+##Methods
+
+###Power Analysis
+
+The original effect size for each condition assuming an average value of  (2 x 2 : Positive/Negative Result x control/Non-exhaustiveness statement) was as follows: Negative Control 0.777, Negative  Nonexhaustiveness 1.847, Positive Control 0.348, and Positve Non-exhaustiveness 0.583. 
+
+Using the lowest and second lowest effect sizes. Power analyses were conducted to for 80%, 90%, 95% power to detect that effect size. Power analyses were calculated using G*Power 3.1.9.4 a-priori F-test family ANOVA: Fixed effects, special, main effects and interactions. 
+
+For an effect size of 3.48 with alpha = 0.05, Power = 0.8, df = 3, groups = 4
+Total sample size = 95; Power 0.9, sample size = 122, and Power 0.95, sample size = 146
+
+For an effect size of 3.48 with alpha = 0.05, Power = 0.8, df = 3, groups = 4
+Total sample size = 37; Power 0.9, sample size = 46, and Power 0.95, sample size = 55
+
+I decided to opt for a sample size of 58 as this would exceed what was calculated at 95% confidence for three of the four effect sizes. This does underpower the result for 
+
+
+###Planned Sample
+
+Planned sample is 58 English speaking Amazon Mechanical Turk workers from the United States with at least a 95% rating from more than 100 tasks.   
+
+###Materials
+
+Materials from experiment will be used as indicated in Experiment 2 of Pilditch (2019) quoted below. 
+
+>"Each participant was assigned to
+one of two conditions: Either all scenarios contained positive
+test results or all contained negative test results. In all
+cases, there was both a target and an alternative explanation
+for the test result ...
+
+
+>"... To address the exhaustiveness
+issue, we introduced a between-subjects factor,
+in which an explicit statement regarding non-exhaustiveness
+was either present (non-exhaustiveness statement) or
+absent (control). This, in conjunction with the test-result
+between-subjects manipulation, led to a 2 × 2 design. The
+non-exhaustiveness statement preceded the standard
+judgment question and used the following structure:
+“Please note, it is possible that [subject] neither [Hypothesis
+1] nor [Hypothesis 2].”
+
+>"To address the confidence question, we included a
+confidence measure directly below the judgment
+question: “How confident are you that your response
+is correct?” Participants responded using a slider to
+indicate from 0% to 100% (no default value; for an
+example scenario, see Section C of the Supplemental
+Material)."
+
+
+
+
+
+
+###Procedure	
+
+Procedures of experiment will be used as indicated in Experiment 2 of Pilditch (2019) quoted below.
+
+>"Participants completed basic
+demographics (age, gender, native language) before moving
+on to the scenarios. Each participant completed the
+four scenarios ...
+in a random order."
+
+>"For each scenario, participants were asked to make a judgment
+of “yes,” “no,” or “cannot tell” when posed with the
+following example format: “Does a [positive/negative] Griess
+test result give any support to the claim that Ann [has/has
+not] handled explosives?”
+
+>"On a separate page, after each scenario judgment,
+participants were asked to “please briefly provide some
+reasoning for your decision regarding the previous scenario
+in the text box below” (not reported in this article).
+Along with demographics, scenario order and time taken
+were recorded."
+
+>"Accordingly, as participants completed each
+of the four scenarios in random order, they made a
+judgment, expressed their confidence in that judgment,
+and then provided some reasoning."
+
+###Analysis Plan
+
+Data tables will include participant demographics, experimental conditions(order, positive/negative results, control/non-exhaustive statement), participant responses, time to respond, participant confidence ratings, and participant explanations.
+
+Mirroring the analysis done in Pilditch(2019), I plan on conducting "a Bayesian analysis of variance (ANOVA) with test result and exhaustiveness manipulation (both between subjects)" as this will test the main inference of the paper. For this, only the participant responses (correct vs. incorrect) and experimental conditions will be used. 
+
+To further examine relationships, a 3(responses) x 2 (test condition positive/neg ) x 2 (knowledge of exhaustiveness/control) ANOVA will be conducted. 
+  
+
+
+###Differences from Original Study
+
+Minor differences between the survey software used and the choices for demographic questions. In the original study participants were asked to choose a binary gender. In addition to the binary genders, I opted to allow for non-binary genders. For native language demographic, instead of choosing a language from a long drop-down list, I opted to list the five most common languages spoken in the US and an option to enter an language if it was not present. Likewise for the location question, I opted for the binary 'In the United States' versus 'outside the United States' with a text box to specify current location if this was not the case. I do not anticipate these modifcations to change responses on the survey. 
+
+One factor that could impact results would be the decreased sample size. As the original sample size was 200, (50 per condition) the sample size we will use is 58 which will give about 14-15 per condition, but should yield significance in three of the four conditions. The sample is underpowered for the forth condition. 
+
+
+### Methods Addendum (Post Data Collection)
+
+You can comment this section out prior to final report with data collection.
+
+#### Actual Sample
+  Sample size, demographics, data exclusions based on rules spelled out in analysis plan
+
+#### Differences from pre-data collection methods plan
+  Any differences from what was described as the original plan, or “none”.
+
+
+##Results
+
+
+### Data preparation
+
+Data preparation following the analysis plan.
+
+Libraries to be used: 
+
+library(tidyr)
+library(dplyr)
+library(stringr) 
+library(ggplot2)
+library(readxl)
+library(BayesFactor)
+
+Data will be imported from Qualtrics via mTurk survey, extraneous data discarded and converted to long format from wide format for each of the analysis. 
+
+
+```{r}
+###Data Preparation
+
+
+####Load Relevant Libraries and Functions
+library(tidyr)
+library(dplyr)
+library(stringr) 
+library(ggplot2)
+library(readxl)
+library(BayesFactor) # For Bayes Factor ANOVA
+
+####Import data
+
+#pilot_1 <- read.csv('https://github.com/psych251/pilditch2019/blob/master/Pilot_study.csv') # currently imports into one column, as opposed to rows, used method below 
+
+pilot_1 <- read.csv('C:/Users/crazy/OneDrive/Desktop/pilditch2019/Copy 2 Replication_Pilditch, Fenton, and Lagnado_ Exp_2 - Copy - Copy_November 29, 2019_15.52.csv',  header=T, na.strings=c("","NA")) # currently imports into one column, as opposed to rows, used method below
+
+
+#pilot <- read_xlsx('C:/Users/crazy/OneDrive/Desktop/pilditch2019/pilot_b_test_reformatted_survey_11_27.xlsx') #working on code to pull from github, however have been getting errors when the path is a github url. 
+
+#### Data exclusion / filtering
+
+pilot_rows12_removed <- pilot_1[-c(1,2),] # remove additional rows from qualtrics file
+
+pilot_ids_added <- mutate(pilot_rows12_removed, "subid" = row_number() )# add subject id
+
+filtered_pilot <- select(pilot_ids_added, subid, +contains("Nitro"), +contains("Ster"), +contains("BT"), +contains("Crash")) #remove extra qualtrics columns
+
+
+
+exp2_filtered <- select(filtered_pilot, -contains("rn")) #remove reasoning for choice 
+
+exp2_decision <- select(exp2_filtered, -contains(".")) # only decisions retained
+
+exp2_decision_long <- gather(exp2_decision, trial, value, Nitro_pos_ctrl: Crash_neg_ex, na.rm = TRUE) #convert to tidy/long data format, remove NAs 
+
+exp2_decision_long_mod <- exp2_decision_long %>% 
+  separate(trial, into = c("Scenario", "Result_given", "Condition"), sep = "_" ) #create varaibles for Scenario type, Result_give (pos/neg), and Condition (control/experimental)
+
+exp2_decision_long_mod$Condition <-
+  replace(exp2_decision_long_mod$Condition, exp2_decision_long_mod$Condition == "ex", "exp") #convert all "ex" nomenclature to "exp" nonmenclature for more descriptive variables, initial Qualtrics variables were character restricted
+
+exp2_decision_long_mod$Scenario <-
+  replace(exp2_decision_long_mod$Scenario, exp2_decision_long_mod$Scenario == "nitro", "Nitro") #convert all 'nitro' to 'Nitro'
+
+
+#### Group data by condition, find mean porportions of each condition
+
+
+exp2_condition  <- subset(exp2_decision_long_mod, select = -Scenario ) #remove scenario column
+
+
+exp2_condition_united <- unite(exp2_condition, united_subid_result_condition, subid, Result_given, Condition, sep = "-" ) #unite subid, Result_given, and Conidition into a single column so funcation as.data.frame can be used
+
+exp2_condition_united_table <- as.data.frame(table(exp2_condition_united)) #counts all options (Yes, No, Cannot Tell) even when value = 0. 
+
+
+exp2_condition_subid <- separate(exp2_condition_united_table, united_subid_result_condition, into = c("subid", "Result_given", "Condition" ), sep = "-") #re-seperate out conditions for use as facets
+
+exp2_proportions_by_subid <- mutate(exp2_condition_subid, prop = Freq/4 ) # calculation of proprotions
+```
+
+
+Confidence table data preparation  
+
+```{r}
+
+
+exp2_confidence <- select(exp2_filtered, subid, contains(".")) # only confidence values retained from filtered dataset
+
+exp2_confidence_long <- gather(exp2_confidence, trial, value, Nitro_pos_ctrl_._1: Crash_neg_ex_._1 ,na.rm = TRUE) #convert to tidy/long data format, remove NAs
+
+exp2_decision_confidence_long <-mutate(exp2_decision_long, confidence = exp2_confidence_long$value) #add long confidence data to decision data
+
+exp2_decision_confidence_long <- exp2_decision_confidence_long %>% 
+  separate(trial, into = c("Scenario", "Result_given", "Condition"), sep = "_" ) #create varaibles for Scenario type, Result_give (pos/neg), and Condition (control/experimental)
+
+exp2_decision_confidence_long$Condition <-
+  replace(exp2_decision_confidence_long$Condition, exp2_decision_confidence_long$Condition == "ex", "exp") #convert all "ex" nomenclature to "exp" nonmenclature for more descriptive variables, initial Qualtrics variables were character restricted
+
+exp2_decision_confidence_long$Scenario <-
+  replace(exp2_decision_confidence_long$Scenario, exp2_decision_confidence_long$Scenario == "nitro", "Nitro") #convert all 'nitro' to 'Nitro'
+
+exp2_decision_confidence_long$confidence <- as.numeric(exp2_decision_confidence_long$confidence) #convert confidence to numeric from character 
+
+```
+
+
+
+
+### Confirmatory analysis
+
+The analyses as specified in the analysis plan. 
+
+#### Judgement Analysis
+Means of porportions will be computed by grouping by test-result condition (variable defined as positive or negative) and further by control and Non-exhaustive Statement (variable defined as control_exhaustive and exp_N_exhaustive). 
+
+
+Calclate and graph means and standard deviations of each of the conditions
+
+
+```{r}
+exp2__decision_means <- exp2_proportions_by_subid %>%
+  group_by(Result_given, Condition, value) %>%
+ summarise(avg_prop = mean(prop), #store means
+    u_interval = mean(prop) + 1.96*sd(prop)/sqrt(length(prop)), #upper bound of 95% CI 
+    l_interval = mean(prop) - 1.96*sd(prop)/sqrt(length(prop))) #lower bound of 95% CI 
+
+ggplot(exp2__decision_means) +  aes(value, avg_prop) + xlab("Response")+ ylab("Proportion") +
+  geom_col(aes(x = value, y = avg_prop)) +
+  geom_errorbar(aes (x = value, ymax = u_interval, ymin = l_interval))+
+  facet_grid(Result_given ~ Condition) 
+
+  
+```
+
+
+#### ANOVA Analysis
+
+A Bayesian Analysis of Variance will be completed looking at test result (positive/negative) and presence of non-exhaustive statement (control_exhaustive and exp_N_exhaustive).Data will be scored based on whether answer is correct (Yes) or incorrect (Cannot Tell, No)
+
+
+
+Bayesian ANOVA 
+
+```{r}
+exp2_binary_result <- mutate(exp2_decision_long_mod, binary_result = ifelse(value == "Yes", 1, 0)) # convert answers to binary correct or incorrect
+
+exp2_binary_cum_result_by_id <- group_by(exp2_binary_result, Result_given, Condition, subid) %>%  summarise (correct = sum(binary_result)) #calculate scores per subject
+
+exp2_binary_summary_by_condition <- group_by(exp2_binary_cum_result_by_id, Result_given, Condition) %>%  summarise (mean_correct = mean(correct), sd_correct = sd(correct), n = length(correct)) # calculate mean, sd, and n
+
+exp2_binary_summary_by_condition$`sd_correct`[is.nan(exp2_binary_summary_by_condition$`sd_correct`)] <- 0 # remove any Nan - only applicable in small samples
+
+exp2_binary_cum_result_by_id$Condition = factor(exp2_binary_cum_result_by_id$Condition) #encode Condition as factor
+exp2_binary_cum_result_by_id$Result_given = factor(exp2_binary_cum_result_by_id$Result_given) #encode Result_given as factor
+
+exp2.aov <- anovaBF(correct ~ Result_given + Condition + Condition*Result_given,  data = exp2_binary_cum_result_by_id,
+whichRandom = "Result_given")
+exp2.aov
+```
+
+
+
+#### Confidence Analysis
+
+Means of confidence in judgments will be computed by grouping by test-result condition (variable defined as positive or negative) and further by control and Non-exhaustive Statement (variable defined as control_exhaustive and exp_N_exhaustive). Graph will be displayed as a box and whisker plot. 
+
+
+
+
+```{r}
+
+ggplot(exp2_decision_confidence_long, aes(x = value, y = confidence)) +
+geom_boxplot() + 
+facet_grid(Result_given ~ Condition) 
+  
+```
+
+*Side-by-side graph with original graph is ideal here*
+
+
+###Exploratory analyses
+
+Any follow-up analyses desired (not required).  
+
+## Discussion
+
+### Summary of Replication Attempt
+
+Open the discussion section with a paragraph summarizing the primary result from the confirmatory analysis and the assessment of whether it replicated, partially replicated, or failed to replicate the original result.  
+
+### Commentary
+
+Add open-ended commentary (if any) reflecting (a) insights from follow-up exploratory analysis, (b) assessment of the meaning of the replication (or not) - e.g., for a failure to replicate, are the differences between original and present study ones that definitely, plausibly, or are unlikely to have been moderators of the result, and (c) discussion of any objections or challenges raised by the current and original authors about the replication attempt.  None of these need to be long.
+
