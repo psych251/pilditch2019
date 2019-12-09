@@ -22,16 +22,16 @@ output:
 
 [Pilditch, Fenton, and Lagnado (2019)](https://github.com/psych251/pilditch2019/tree/master/original_paper/pilditch2019.pdf "pilditch2019")
 
-##Introduction
+## Introduction
 My research interests lie in studying adult learning in the sciences, from the undergraduate sciences through medical school, especially where learning still takes place in lecture halls. However, I’m also interested in what neuroscience and the cognitive sciences can bring to this realm and what can be learned using these populations of post-secondary students. This study, though nominally part of this body of research does concern itself with the population I am interested in.  In addition, I feel that in replicating this study, I would not only be able to hone skills necessary for processing data, but also explore an area of interest in my work. I find the underlying idea of the zero-sum fallacy something to be considered in educational assessment, even if the study is far removed from application in the classroom setting.   
 
 The study was originally performed using mTurk in three related experiments in which scenarios were described onscreen after which respondents answered questions indicating whether their judgment was "yes", "no", or "Cannot Tell". The main difficulties would lie in recruiting, screening, and paying a large enough sample size- 25 people for experiment 1, 200 each in experiments 2 and 3. Beyond randomly assigning participants to groups and the experiment stimulus does not require specialized programming in mTurk. Storage, retrieval and analysis would pose a challenge, as I am not yet familiar with data storage and output from mTurk. As we seek to replicate only one experiment, I would be able to  
 
 
 
-##Methods
+## Methods
 
-###Power Analysis
+### Power Analysis
 
 The original effect size for each condition assuming an average value of  (2 x 2 : Positive/Negative Result x control/Non-exhaustiveness statement) was as follows: Negative Control 0.777, Negative  Nonexhaustiveness 1.847, Positive Control 0.348, and Positve Non-exhaustiveness 0.583. 
 
@@ -46,13 +46,13 @@ Total sample size = 37; Power 0.9, sample size = 46, and Power 0.95, sample size
 I decided to opt for a sample size of 58 as this would exceed what was calculated at 95% confidence for three of the four effect sizes. This does underpower the result for 
 
 
-###Planned Sample
+### Planned Sample
 
 Planned sample is 58 English speaking Amazon Mechanical Turk workers from the United States with at least a 95% rating from more than 100 tasks.   
 
 Participants will be removed from the study for incomplete responses and if their native language is not English, similarly to methods reported in the original study.  
 
-###Materials
+### Materials
 
 Materials from experiment will be used as indicated in Experiment 2 of Pilditch (2019) quoted below. 
 
@@ -87,7 +87,7 @@ Material)."
 
 
 
-###Procedure	
+### Procedure	
 
 Procedures of experiment will be used as indicated in Experiment 2 of Pilditch (2019) quoted below.
 
@@ -115,24 +115,35 @@ of the four scenarios in random order, they made a
 judgment, expressed their confidence in that judgment,
 and then provided some reasoning."
 
-###Analysis Plan
+### Analysis Plan
 
-Data tables will include participant demographics, experimental conditions(order, positive/negative results, control/non-exhaustive statement), participant responses, time to respond, participant confidence ratings, and participant explanations.
+*Descriptive Analysis*
+Data tables will include participant demographics, experimental conditions(order, positive/negative results, control/non-exhaustive statement), participant responses, time to respond, participant confidence ratings, and participant explanations. 
 
-Mirroring the analysis done in Pilditch(2019), I plan on conducting "a Bayesian analysis of variance (ANOVA) with test result and exhaustiveness manipulation (both between subjects)" as this will test the main inference of the paper. For this, only the participant responses (correct vs. incorrect) and experimental conditions will be used. 
 
-To further examine relationships, a 3(responses) x 2 (test condition positive/neg ) x 2 (knowledge of exhaustiveness/control) ANOVA will be conducted. 
+*Bayesian Analysis*
+Mirroring the analysis done in Pilditch, Lagnado and Fenton (2019), I plan on conducting "a Bayesian analysis of variance (ANOVA) with test result and exhaustiveness manipulation (both between subjects)". Data will be scored based on whether answer is correct (Yes = 1) or incorrect (Cannot Tell = 0, No = 0 ).  For this, only the number of correct responses of each participant will be used as the dependent variable. Pilditch (2019) cites Dienes (2014) that a Bayes Factor of less than a third indicates strong support for the null hypothesis and a factor of greater than 3 represents substantial , therefore I will apply the same standard. 
+
+To determine effect size, a Bayesian one-sample t-test will be applied assessing differene from chance (1.33). 
+
+To examine confidence data, a 3 (judgement (Yes/No/Cannot Tell)) x  2 (test condition positive/neg ) x 2 (knowledge of exhaustiveness/control) ANOVA will be conducted. 
   
+Bayesian data analyses will be conducted in JASP first, similar to the experiemental study then attempted in R for ease of replication. 
 
 
+### Differences from Original Study
 
-###Differences from Original Study
+Minor differences between the survey software used and the choices for demographic questions. 
 
-Minor differences between the survey software used and the choices for demographic questions. In the original study participants were asked to choose a binary gender. In addition to the binary genders, I opted to allow for non-binary genders. For native language demographic, instead of choosing a language from a long drop-down list, I opted to list the five most common languages spoken in the US and an option to enter an language if it was not present. Likewise for the location question, I opted for the binary 'In the United States' versus 'outside the United States' with a text box to specify current location if this was not the case. I do not anticipate these modifcations to change responses on the survey. 
+Qualtrics will be used in this survey. 
+
+In the original study participants were asked to choose a binary gender. In addition to the binary genders, I opted to allow for non-binary genders. For native language demographic, instead of choosing a language from a long drop-down list, I opted to list the five most common languages spoken in the US and an option to enter an language if it was not present. Likewise for the location question, I opted for the binary 'In the United States' versus 'outside the United States' with a text box to specify current location if this was not the case. I do not anticipate these modifcations to change responses on the survey. 
+
+In addition, the demographic questions have been moved to the end of the survey to avoid any possible priming effects. 
 
 One factor that could impact results would be the decreased sample size. As the original sample size was 200, (50 per condition) the sample size we will use is 58 which will give about 14-15 per condition, but should yield significance in three of the four conditions. The sample is underpowered for the forth condition. 
 
-
+<!--
 ### Methods Addendum (Post Data Collection)
 
 You can comment this section out prior to final report with data collection.
@@ -142,9 +153,9 @@ You can comment this section out prior to final report with data collection.
 
 #### Differences from pre-data collection methods plan
   Any differences from what was described as the original plan, or “none”.
+-->
 
-
-##Results
+## Results
 
 
 ### Data preparation
@@ -164,25 +175,24 @@ Data will be imported from Qualtrics via mTurk survey, extraneous data discarded
 
 
 ```{r}
-###Data Preparation
+### Data Preparation
 
 
-####Load Relevant Libraries and Functions
+#### Load Relevant Libraries and Functions
 library(tidyr)
 library(dplyr)
 library(stringr) 
 library(ggplot2)
 library(readxl)
+library(readr)
 library(BayesFactor) # For Bayes Factor ANOVA
 
-####Import data
+#### Import data
 
-#pilot_1 <- read.csv('https://github.com/psych251/pilditch2019/blob/master/Pilot_study.csv') # currently imports into one column, as opposed to rows, used method below 
+#Data in Pilot gathered using a with-in subjects design, therefore Pilot_1 data used below is from sample survey flows, to ensure proper processing of data. 
 
-pilot_1 <- read.csv('C:/Users/crazy/OneDrive/Desktop/pilditch2019/Copy 2 Replication_Pilditch, Fenton, and Lagnado_ Exp_2 - Copy - Copy_November 29, 2019_15.52.csv',  header=T, na.strings=c("","NA")) # currently imports into one column, as opposed to rows, used method below
+pilot_1 <- read.csv('C:/Users/crazy/OneDrive/Desktop/pilditch2019/Copy 2 Replication_Pilditch, Fenton, and Lagnado_ Exp_2 - Copy - Copy_November 29, 2019_15.52.csv',  header=T, na.strings=c("","NA")) 
 
-
-#pilot <- read_xlsx('C:/Users/crazy/OneDrive/Desktop/pilditch2019/pilot_b_test_reformatted_survey_11_27.xlsx') #working on code to pull from github, however have been getting errors when the path is a github url. 
 
 #### Data exclusion / filtering
 
@@ -208,11 +218,13 @@ exp2_decision_long_mod$Condition <-
 
 exp2_decision_long_mod$Scenario <-
   replace(exp2_decision_long_mod$Scenario, exp2_decision_long_mod$Scenario == "nitro", "Nitro") #convert all 'nitro' to 'Nitro'
+```
+
 
 
 #### Group data by condition, find mean porportions of each condition
 
-
+```{r} 
 exp2_condition  <- subset(exp2_decision_long_mod, select = -Scenario ) #remove scenario column
 
 
@@ -252,11 +264,11 @@ exp2_decision_confidence_long$confidence <- as.numeric(exp2_decision_confidence_
 ```
 
 
-
+<!--
 
 ### Confirmatory analysis
 
-The analyses as specified in the analysis plan. 
+The analyses as specified in the analysis plan. -->
 
 #### Judgement Analysis
 Means of porportions will be computed by grouping by test-result condition (variable defined as positive or negative) and further by control and Non-exhaustive Statement (variable defined as control_exhaustive and exp_N_exhaustive). 
@@ -272,10 +284,11 @@ exp2__decision_means <- exp2_proportions_by_subid %>%
     u_interval = mean(prop) + 1.96*sd(prop)/sqrt(length(prop)), #upper bound of 95% CI 
     l_interval = mean(prop) - 1.96*sd(prop)/sqrt(length(prop))) #lower bound of 95% CI 
 
-ggplot(exp2__decision_means) +  aes(value, avg_prop) + xlab("Response")+ ylab("Proportion") +
+ggplot(transform(exp2__decision_means, Result_given=factor(Result_given, levels = c("pos", "neg")))) +  aes(value, avg_prop) + xlab("Response")+ ylab("Proportion") +
   geom_col(aes(x = value, y = avg_prop)) +
+  scale_x_discrete(limits=c("Yes","No","Cannot Tell")) +
   geom_errorbar(aes (x = value, ymax = u_interval, ymin = l_interval))+
-  facet_grid(Result_given ~ Condition) 
+  facet_grid(Condition ~ Result_given) 
 
   
 ```
@@ -283,14 +296,15 @@ ggplot(exp2__decision_means) +  aes(value, avg_prop) + xlab("Response")+ ylab("P
 
 #### ANOVA Analysis
 
-A Bayesian Analysis of Variance will be completed looking at test result (positive/negative) and presence of non-exhaustive statement (control_exhaustive and exp_N_exhaustive).Data will be scored based on whether answer is correct (Yes) or incorrect (Cannot Tell, No)
+A Bayesian Analysis of Variance will be completed looking at test result (positive/negative) and presence of non-exhaustive statement (control_exhaustive and exp_N_exhaustive). Data will be scored based on whether answer is correct (Yes) or incorrect (Cannot Tell, No)
 
 
 
 Bayesian ANOVA 
 
 ```{r}
-exp2_binary_result <- mutate(exp2_decision_long_mod, binary_result = ifelse(value == "Yes", 1, 0)) # convert answers to binary correct or incorrect
+exp2_binary_result <- mutate(exp2_decision_long_mod, binary_result = ifelse(value == "Yes", 1, 0)) 
+# convert answers to binary correct or incorrect
 
 exp2_binary_cum_result_by_id <- group_by(exp2_binary_result, Result_given, Condition, subid) %>%  summarise (correct = sum(binary_result)) #calculate scores per subject
 
@@ -317,12 +331,15 @@ Means of confidence in judgments will be computed by grouping by test-result con
 
 ```{r}
 
-ggplot(exp2_decision_confidence_long, aes(x = value, y = confidence)) +
+ggplot(transform(exp2_decision_confidence_long, 
+                 Result_given=factor(Result_given, levels = c("pos", "neg"))),
+       aes(x = value, y = confidence)) +
 geom_boxplot() + 
-facet_grid(Result_given ~ Condition) 
+scale_x_discrete(limits=c("Yes","No","Cannot Tell")) +
+facet_grid(Condition ~ Result_given) 
   
 ```
-
+<!--
 *Side-by-side graph with original graph is ideal here*
 
 
@@ -339,4 +356,5 @@ Open the discussion section with a paragraph summarizing the primary result from
 ### Commentary
 
 Add open-ended commentary (if any) reflecting (a) insights from follow-up exploratory analysis, (b) assessment of the meaning of the replication (or not) - e.g., for a failure to replicate, are the differences between original and present study ones that definitely, plausibly, or are unlikely to have been moderators of the result, and (c) discussion of any objections or challenges raised by the current and original authors about the replication attempt.  None of these need to be long.
+-->
 
